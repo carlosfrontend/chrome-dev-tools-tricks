@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Tricks!</title>
+</head>
+<body>
+    <p onclick="makeGreen()">×BREAK×DOWN×</p>
+    <script>
+        const dogs = [{name: 'Snickers', age: 2}, {name: 'hugo', age: 8}];
+
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = '#BADA55';
+            p.style.fontSize = '50px';
+        }
+
+        // Regular
+        console.log('Hello');
+
+        // Interpolated
+        console.log('Hello I am a %s string','🎙');
+
+        // Styled
+        console.log('%c I am a console styled text!', 'font-size:50px; background:red; text-shadow: 8px 8px 8px dodgerblue;border:4px dotted yellow;')
+
+        //  Warning
+        console.warn('Ohh noooo it\'s a warning!');
+
+        // Error
+        console.error("Shit it's an error !!!");
+
+        // Info
+        console.info('Humans are people');
+
+        // Testing
+        let p = document.querySelector('p');
+        p.classList.add('paraglaph');
+        console.assert(p.classList.contains('paragraph'), 'This is wrong');
+
+        // Clearing, uncomment under line for use it
+        // console.clear();
+
+        // Viewing DOM elements
+        console.log(p);
+        console.dir(p);
+
+        // Grouping together
+        dogs.forEach(dog => {
+            console.groupCollapsed(`${dog.name}`);
+            console.log(`This is ${dog.name}`);
+            console.log(`${dog.name} is ${dog.age} years old.`);
+            console.log(`${dog.name} is ${dog.age  *  7} years old.`);
+            console.groupEnd(`${dog.name}`);
+        });
+
+        // Counting
+
+        console.count('John');
+        console.count('Doe');
+        console.count('John');
+        console.count('John');
+        console.count('John');
+        console.count('Doe');
+        console.count('John');
+        console.count('John');
+        console.count('John');
+
+        // Timing
+
+        console.time('Fetching data ...');
+        fetch('https://api.github.com/users/carlosfrontend')
+            .then(data => data.json())
+            .then(data  => {
+                console.timeEnd('Fetching data ...');
+                console.log(data);
+            });
+            
+        // Show array of objects as table
+        console.table(dogs);
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
